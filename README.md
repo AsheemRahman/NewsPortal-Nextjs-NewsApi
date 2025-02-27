@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NewsPortal Website
 
-## Getting Started
+A modern news website built with Next.js that fetches and displays news articles from NewsAPI.org. The website allows users to browse news by category, search for specific articles, and view detailed news content. Unit tests are included to ensure component and API correctness.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Top Headlines**: Displays trending news articles.
+- **Category-based News**: Browse news by different categories (e.g., Business, Technology, Sports, Entertainment, etc.).
+- **Search News**: Search for articles using keywords.
+- **News Details Page**: Clicking on an article opens a detailed view with full content.
+- **Pagination**: Navigate through multiple pages of news results.
+- **Loading & Error Handling**: Displays loading indicators and handles API errors gracefully.
+- **Responsive UI**: Mobile-friendly design.
+
+
+## Additional Features
+
+- **Dark Mode**: Toggle between light and dark themes.
+- **User Preferences**: Save last searched keyword/category using localStorage.
+
+## Tech Stack
+
+- **Framework**: Next.js
+- **State Management**: React Hooks (useState, useEffect, useContext)
+- **API Calls**: Axios
+- **Styling**: TailwindCSS
+- **Routing**: Next.js Pages & Dynamic Routing
+- **Environment Variables**: `.env.local` for API keys
+- **Testing**: Jest & React Testing Library
+
+## Installation
+
+1. **Clone the Repository**
+   ```sh
+   git clone https://github.com/AsheemRahman/NewsPortal-Nextjs-NewsApi.git
+   cd NewsPortal-Nextjs-NewsApi
+   ```
+
+2. **Install Dependencies**
+   ```sh
+   npm install
+   ```
+
+3. **Set Up Environment Variables**
+   Create a `.env.local` file in the root directory and add your NewsAPI key:
+   ```sh
+   NEXT_PUBLIC_NEWS_API_KEY = "your_api_key_here"
+   ```
+
+4. **Run the Development Server**
+   ```sh
+   npm run dev
+   ```
+   The application will be available at `http://localhost:3000`.
+
+## Project Structure
+
+```
+NewsPortal-Nextjs-NewsApi/
+│── public/                   # Static assets
+│── src/
+│  │── components/            # Reusable UI components
+│  │   ├── Layout/
+│  │   │   ├── footer.js
+│  │   │   ├── header.js
+│  │   │   ├── Layout.js
+│  │   ├── News/
+│  │   ├── ArticleCard.js
+│  │   │   ├── ArticleList.js
+│  │   │   ├── CategoryNav.js
+│  │   │   ├── CategoryNav.js
+│  │   │   ├── Pagination.js
+│  │   │   ├── SearchBar.js
+│  │   ├── UI/
+│  │   │   ├── ErrorMessage.js
+│  │   │   ├── LoadingSpinner.js
+│  │── hooks/                 # Reusable UI components
+│  │   │   ├── useLocalStorage.js
+│  │   │   ├── useNews.js
+│  │── lib/                   # Helper functions (API calls, etc.)
+│  │   │   ├── Api.js
+│  │── styles/                # Global and component-specific styles
+│  │   ├── global.css         # Global and component-specific styles
+│  │── pages/                 # Next.js pages
+│  │   ├── category/          # Category-based news pages
+│  │   │   ├── [category].js
+│  │   ├── Api/               # Api news pages
+│  │   │   ├── news.js
+│  │   ├── article/           # Sigle article page
+│  │   │   ├── [artile].js
+│  │   ├── _app.js            # App file
+│  │   ├── _document.js
+│  │   ├── index.js           # Homepage (Top Headlines)
+│  │   ├── search.js          # Search results page
+│  │── tests/                 # Unit tests
+│  │   ├── components/
+│  │   │   ├── ArticleList.test.js
+│  │   │   ├── SearchBar.test.js
+│  │   ├── hooks/
+│  │   │   ├── useNews.test.js
+│── .env.local                # Environment variables
+│── jest.confiq.js            # Congiq jest
+│── jest.setup.js             # setup jest
+│── next.config.js            # Next.js configuration
+│── package.json              # Project dependencies and scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API Integration
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Fetching News Articles
+- **Top Headlines**: `/v2/top-headlines?country=us&apiKey={API_KEY}`
+- **Category Filter**: `/v2/top-headlines?category={category}&apiKey={API_KEY}`
+- **Search News**: `/v2/everything?q={query}&apiKey={API_KEY}`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Testing
 
-## Learn More
+Unit tests are written using Jest and React Testing Library.
 
-To learn more about Next.js, take a look at the following resources:
+- **Run Tests**:
+  ```sh
+  npm test
+  ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Author
 
-## Deploy on Vercel
+Developed by [Asheem Rahman](https://github.com/AsheemRahman).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

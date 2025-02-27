@@ -35,10 +35,9 @@ export const searchNews = async ({ query, sortBy = 'publishedAt', page = 1, page
 
 export const getArticleDetails = async (title, url) => {
     try {
-        const params = { q: title, apiKey: API_KEY };
+        const params = { q: title, apiKey: API_KEY, pageSize: 50 };
         const response = await axios.get(`${BASE_URL}/everything`, { params });
-        const article = response.data.articles.find(article => article.url === url);
-
+        const article = response.data.articles.find(article => article.url === url || article.title === title);
         if (!article) {
             throw new Error('Article not found');
         }

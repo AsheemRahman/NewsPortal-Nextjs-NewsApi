@@ -46,7 +46,7 @@ export default function Header() {
                         </Link>
 
                         <button onClick={toggleDarkMode}
-                            className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200" aria-label="Toggle dark mode">
+                            className="p-2 ml-9 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200" aria-label="Toggle dark mode">
                             {darkMode ? (
                                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}

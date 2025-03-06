@@ -39,7 +39,7 @@ export const getArticleDetails = async (title, url) => {
         const response = await axios.get(`${BASE_URL}/everything`, { params });
         const article = response.data.articles.find(article => article.url === url || article.title === title);
         if (!article) {
-            throw new Error('Article not found');
+            return
         }
 
         return article;

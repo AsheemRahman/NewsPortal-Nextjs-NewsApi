@@ -14,7 +14,6 @@ export default function ArticlePage() {
     const [article, setArticle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
     useEffect(() => {
         const fetchArticle = async () => {
             if (!id) return;
@@ -47,19 +46,6 @@ export default function ArticlePage() {
         );
     }
 
-    if (error) {
-        return (
-            <Layout showCategories={false}>
-                <ErrorMessage message={error} />
-                <div className="mt-6 text-center">
-                    <button onClick={() => router.back()} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                        Go Back
-                    </button>
-                </div>
-            </Layout>
-        );
-    }
-
     if (!article) {
         return (
             <Layout showCategories={false}>
@@ -77,6 +63,20 @@ export default function ArticlePage() {
             </Layout>
         );
     }
+
+    if (error) {
+        return (
+            <Layout showCategories={false}>
+                <ErrorMessage message={error} />
+                <div className="mt-6 text-center">
+                    <button onClick={() => router.back()} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                        Go Back
+                    </button>
+                </div>
+            </Layout>
+        );
+    }
+
 
     return (
         <Layout showCategories={false}>
